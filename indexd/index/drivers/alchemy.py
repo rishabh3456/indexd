@@ -106,15 +106,20 @@ class IndexRecord(Base):
         """
         Get the full index document
         """
-        urls = [u.url for u in self.urls]
-        acl = [u.ace for u in self.acl]
-        authz = [u.resource for u in self.authz]
-        hashes = {h.hash_type: h.hash_value for h in self.hashes}
-        metadata = {m.key: m.value for m in self.index_metadata}
+        # urls = [u.url for u in self.urls]
+        urls = []
+        # acl = [u.ace for u in self.acl]
+        acl = []
 
-        urls_metadata = {
-            u.url: {m.key: m.value for m in u.url_metadata} for u in self.urls
-        }
+        # hashes = {h.hash_type: h.hash_value for h in self.hashes}
+        hashes = {}
+        # metadata = {m.key: m.value for m in self.index_metadata}
+        metadata = {}
+
+        # urls_metadata = {
+        #     u.url: {m.key: m.value for m in u.url_metadata} for u in self.urls
+        # }
+        urls_metadata = {}
         created_date = self.created_date.isoformat()
         updated_date = self.updated_date.isoformat()
 
@@ -132,7 +137,7 @@ class IndexRecord(Base):
             "authz": authz,
             "hashes": hashes,
             "metadata": metadata,
-            "form": self.form,
+            "form": {},
             "created_date": created_date,
             "updated_date": updated_date,
         }
