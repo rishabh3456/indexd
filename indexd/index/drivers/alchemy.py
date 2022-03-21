@@ -116,6 +116,8 @@ class IndexRecord(Base):
         # metadata = {m.key: m.value for m in self.index_metadata}
         metadata = {}
 
+        authz = []
+
         # urls_metadata = {
         #     u.url: {m.key: m.value for m in u.url_metadata} for u in self.urls
         # }
