@@ -116,7 +116,9 @@ class SQLAlchemyAuthDriver(AuthDriverABC):
             try:
                 query.one()
             except NoResultFound as err:
-                raise AuthError("username / password mismatch")
+                raise AuthError(
+                    f"username / password mismatch -- {username}, {password}"
+                )
 
         context = {
             "username": username,
