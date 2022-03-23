@@ -112,7 +112,7 @@ class SQLAlchemyAuthDriver(AuthDriverABC):
             # Select on username / password.
             query = query.filter(AuthRecord.username == username)
             query = query.filter(AuthRecord.password == password)
-
+            logger.info(f"Auth Credentials -- {username}, {password}")
             try:
                 query.one()
             except NoResultFound as err:
